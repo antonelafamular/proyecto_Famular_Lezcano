@@ -2,9 +2,12 @@ namespace proyecto_Famular_Lezcano
 {
     public partial class FormMain : Form
     {
-        public FormMain()
+        private string rolUsuario;
+        public FormMain(string rol)
         {
             InitializeComponent();
+
+            rolUsuario = rol;
         }
 
         private void LoadUserControl(UserControl uc)
