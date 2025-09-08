@@ -43,10 +43,3 @@ namespace proyecto_Famular_Lezcano
         }
     }
 }
-
-public class Usuario
-{
-    public string? Nombre { get; set; }
-    public string? Password { get; set; }
-    public string? Rol { get; set; } // "Vendedor" o "Gerente"
-}
