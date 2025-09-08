@@ -28,10 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            LTitulo = new Label();
+            BAgregar = new Button();
+            SuspendLayout();
+            // 
+            // LTitulo
+            // 
+            LTitulo.AutoSize = true;
+            LTitulo.Location = new Point(24, 31);
+            LTitulo.Name = "LTitulo";
+            LTitulo.Size = new Size(146, 15);
+            LTitulo.TabIndex = 0;
+            LTitulo.Text = "GESTION DE VENDEDORES";
+            // 
+            // BAgregar
+            // 
+            BAgregar.Location = new Point(467, 31);
+            BAgregar.Name = "BAgregar";
+            BAgregar.Size = new Size(152, 23);
+            BAgregar.TabIndex = 1;
+            BAgregar.Text = "Agregar Vendedor";
+            BAgregar.UseVisualStyleBackColor = true;
+            // 
+            // UCVendedores
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(BAgregar);
+            Controls.Add(LTitulo);
+            Name = "UCVendedores";
+            Size = new Size(635, 490);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label LTitulo;
+        private Button BAgregar;
     }
 }

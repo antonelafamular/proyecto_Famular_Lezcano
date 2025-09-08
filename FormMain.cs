@@ -10,12 +10,41 @@ namespace proyecto_Famular_Lezcano
             rolUsuario = rol;
         }
 
-        private void LoadUserControl(UserControl uc)
+        private void AbrirUserControl(UserControl uc)
         {
-            PanelContent.Controls.Clear();   // Limpia lo que haya antes
-            uc.Dock = DockStyle.Fill;        // Que ocupe todo el panel
-            PanelContent.Controls.Add(uc);   // Agrega el nuevo control
+            // Limpia el panel derecho antes de cargar otro
+            PanelContent.Controls.Clear();
+
+            // Configura el UserControl para que ocupe todo el panel
+            uc.Dock = DockStyle.Fill;
+
+            // Agrega el nuevo UserControl
+            PanelContent.Controls.Add(uc);
         }
 
+        private void BClientes_Click(object sender, EventArgs e)
+        {
+            AbrirUserControl(new UCClientes());
+        }
+
+        private void BProductos_Click(object sender, EventArgs e)
+        {
+            AbrirUserControl(new UCProductos());
+        }
+
+        private void BVentas_Click(object sender, EventArgs e)
+        {
+            AbrirUserControl(new UCVentas());
+        }
+
+        private void BVendedores_Click(object sender, EventArgs e)
+        {
+            AbrirUserControl(new UCVendedores());
+        }
+
+        private void BInformes_Click(object sender, EventArgs e)
+        {
+            AbrirUserControl(new UCInformes());
+        }
     }
 }

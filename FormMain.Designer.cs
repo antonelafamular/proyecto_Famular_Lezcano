@@ -34,6 +34,11 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             PanelMenu = new Panel();
+            BInformes = new Button();
+            BVendedores = new Button();
+            BVentas = new Button();
+            BProductos = new Button();
+            BClientes = new Button();
             pictureBox4 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -48,7 +53,7 @@
             PanelContent.BackColor = SystemColors.ActiveBorder;
             PanelContent.Location = new Point(150, 0);
             PanelContent.Name = "PanelContent";
-            PanelContent.Size = new Size(636, 500);
+            PanelContent.Size = new Size(635, 490);
             PanelContent.TabIndex = 1;
             // 
             // pictureBox5
@@ -90,6 +95,11 @@
             // PanelMenu
             // 
             PanelMenu.BackColor = SystemColors.ActiveCaption;
+            PanelMenu.Controls.Add(BInformes);
+            PanelMenu.Controls.Add(BVendedores);
+            PanelMenu.Controls.Add(BVentas);
+            PanelMenu.Controls.Add(BProductos);
+            PanelMenu.Controls.Add(BClientes);
             PanelMenu.Controls.Add(pictureBox4);
             PanelMenu.Controls.Add(pictureBox3);
             PanelMenu.Controls.Add(pictureBox2);
@@ -99,6 +109,56 @@
             PanelMenu.Name = "PanelMenu";
             PanelMenu.Size = new Size(150, 500);
             PanelMenu.TabIndex = 0;
+            // 
+            // BInformes
+            // 
+            BInformes.Location = new Point(35, 435);
+            BInformes.Name = "BInformes";
+            BInformes.Size = new Size(75, 23);
+            BInformes.TabIndex = 15;
+            BInformes.Text = "Informes";
+            BInformes.UseVisualStyleBackColor = true;
+            BInformes.Click += BInformes_Click;
+            // 
+            // BVendedores
+            // 
+            BVendedores.Location = new Point(35, 334);
+            BVendedores.Name = "BVendedores";
+            BVendedores.Size = new Size(82, 23);
+            BVendedores.TabIndex = 14;
+            BVendedores.Text = "Vendedores";
+            BVendedores.UseVisualStyleBackColor = true;
+            BVendedores.Click += BVendedores_Click;
+            // 
+            // BVentas
+            // 
+            BVentas.Location = new Point(35, 238);
+            BVentas.Name = "BVentas";
+            BVentas.Size = new Size(75, 23);
+            BVentas.TabIndex = 13;
+            BVentas.Text = "Ventas";
+            BVentas.UseVisualStyleBackColor = true;
+            BVentas.Click += BVentas_Click;
+            // 
+            // BProductos
+            // 
+            BProductos.Location = new Point(35, 140);
+            BProductos.Name = "BProductos";
+            BProductos.Size = new Size(75, 23);
+            BProductos.TabIndex = 12;
+            BProductos.Text = "Productos";
+            BProductos.UseVisualStyleBackColor = true;
+            BProductos.Click += BProductos_Click;
+            // 
+            // BClientes
+            // 
+            BClientes.Location = new Point(35, 39);
+            BClientes.Name = "BClientes";
+            BClientes.Size = new Size(75, 23);
+            BClientes.TabIndex = 0;
+            BClientes.Text = "Clientes";
+            BClientes.UseVisualStyleBackColor = true;
+            BClientes.Click += BClientes_Click;
             // 
             // pictureBox4
             // 
@@ -135,5 +195,10 @@
         private PictureBox pictureBox3;
         private Panel PanelMenu;
         private PictureBox pictureBox4;
+        private Button BInformes;
+        private Button BVendedores;
+        private Button BVentas;
+        private Button BProductos;
+        private Button BClientes;
     }
 }
