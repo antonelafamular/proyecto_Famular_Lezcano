@@ -1,37 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using proyecto_Famular_Lezcano.Models; // Para acceder al DbContext
 
 namespace proyecto_Famular_Lezcano
 {
     public partial class FormLogin : Form
     {
+        private readonly ProyectoFamularLezcanoContext _context;
+
         public FormLogin()
         {
             InitializeComponent();
+            _context = new ProyectoFamularLezcanoContext();
         }
 
-        List<Usuario> usuarios = new List<Usuario>()
-        {
-            new Usuario() { Nombre = "vendedor1", Password = "123", Rol = "Vendedor" },
-            new Usuario() { Nombre = "gerente1", Password = "123", Rol = "Gerente" }
-        };
         private void BLogin_Click(object sender, EventArgs e)
         {
-            string usuarioIngresado = TUsuario.Text;
-            string passIngresado = TPassword.Text;
+            string usuarioIngresado = TUsuario.Text.Trim();
+            string passIngresado = TPassword.Text.Trim();
 
-            var usuario = usuarios.FirstOrDefault(u => u.Nombre == usuarioIngresado && u.Password == passIngresado);
+            var usuario = _context.Usuarios
+                .FirstOrDefault(u => u.NombreUsuario == usuarioIngresado);
 
-            if (usuario != null)
+            if (usuario != null && BCrypt.Net.BCrypt.Verify(passIngresado, usuario.Contrasena))
             {
-                // Abrir el FormMain y pasar el rol
                 FormMain formMain = new FormMain(usuario.Rol);
                 formMain.Show();
                 this.Hide();
@@ -41,5 +34,7 @@ namespace proyecto_Famular_Lezcano
                 MessageBox.Show("Usuario o contraseña incorrectos");
             }
         }
+
     }
 }
+

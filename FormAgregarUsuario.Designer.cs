@@ -1,6 +1,6 @@
 ﻿namespace proyecto_Famular_Lezcano
 {
-    partial class FormAgregarVendedor
+    partial class FormAgregarUsuario
     {
         /// <summary>
         /// Required designer variable.

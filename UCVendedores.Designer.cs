@@ -51,7 +51,7 @@
             // 
             // BAgregar
             // 
-            BAgregar.Location = new Point(467, 31);
+            BAgregar.Location = new Point(480, 31);
             BAgregar.Name = "BAgregar";
             BAgregar.Size = new Size(152, 23);
             BAgregar.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             dgvVendedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVendedores.Columns.AddRange(new DataGridViewColumn[] { nombre_vendedor, apellido_vendedor, acronimo_vendedor, email_vendedor, estado_vendedor, acciones });
-            dgvVendedores.Location = new Point(3, 139);
+            dgvVendedores.Location = new Point(3, 94);
             dgvVendedores.Name = "dgvVendedores";
             dgvVendedores.Size = new Size(629, 164);
             dgvVendedores.TabIndex = 2;

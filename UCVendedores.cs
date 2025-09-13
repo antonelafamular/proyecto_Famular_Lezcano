@@ -1,48 +1,75 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using proyecto_Famular_Lezcano.Models; // 👈 para acceder al DbContext y Usuario
 
 namespace proyecto_Famular_Lezcano
 {
     public partial class UCVendedores : UserControl
     {
-        private BindingList<Usuario> listaUsuarios;
+        private ProyectoFamularLezcanoContext _context;
+
         public UCVendedores()
         {
             InitializeComponent();
-            listaUsuarios = new BindingList<Usuario>();
 
-            dgvVendedores.DataSource = listaUsuarios;
+            _context = new ProyectoFamularLezcanoContext();
 
-            // Opcional: configurar columnas
-            dgvVendedores.AutoGenerateColumns = true;
+            dgvVendedores.AutoGenerateColumns = false;
+            dgvVendedores.Columns.Clear();
+
+            // Agrego columnas en el orden correcto
+            dgvVendedores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Nombre",
+                DataPropertyName = "Nombre"
+            });
+            dgvVendedores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Apellido",
+                DataPropertyName = "Apellido"
+            });
+            dgvVendedores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Usuario",
+                DataPropertyName = "NombreUsuario"   // 👈 propiedad real
+            });
+            dgvVendedores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Password (Hash)",
+                DataPropertyName = "Contrasena"      // 👈 guardamos hash
+            });
+            dgvVendedores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Email",
+                DataPropertyName = "Email"
+            });
+            dgvVendedores.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Rol",
+                DataPropertyName = "Rol"
+            });
+
+            CargarUsuarios();
         }
 
+        private void CargarUsuarios()
+        {
+            var usuarios = _context.Usuarios.ToList();
+            dgvVendedores.DataSource = usuarios;
+        }
 
         private void BAgregar_Click(object sender, EventArgs e)
         {
-            FormAgregarVendedor? form = new FormAgregarVendedor();
-            if (form.ShowDialog() == DialogResult.OK && form.NuevoUsuario != null)
+            using (FormAgregarUsuario form = new FormAgregarUsuario())
             {
-                listaUsuarios.Add(form.NuevoUsuario);
+                if (form.ShowDialog() == DialogResult.OK && form.NuevoUsuario != null)
+                {
+                    _context.Usuarios.Add(form.NuevoUsuario);
+                    _context.SaveChanges();
+                    CargarUsuarios(); // refrescar el grid
+                }
             }
         }
-    }
-
-    public class Usuario
-    {
-        public string? Nombre { get; set; }
-        public string? Apellido { get; set; }
-        public string? UsuarioLogin { get; set; }
-        public string? Password { get; set; }
-        public string? Email { get; set; }
-        public string? Rol { get; set; }
-        public string? Estado { get; set; }
     }
 }
