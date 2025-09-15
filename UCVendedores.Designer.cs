@@ -63,7 +63,7 @@
             // 
             dgvVendedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVendedores.Columns.AddRange(new DataGridViewColumn[] { nombre_vendedor, apellido_vendedor, acronimo_vendedor, email_vendedor, estado_vendedor, acciones });
-            dgvVendedores.Location = new Point(3, 94);
+            dgvVendedores.Location = new Point(3, 100);
             dgvVendedores.Name = "dgvVendedores";
             dgvVendedores.Size = new Size(629, 164);
             dgvVendedores.TabIndex = 2;
