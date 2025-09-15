@@ -16,5 +16,20 @@ namespace proyecto_Famular_Lezcano
         {
             InitializeComponent();
         }
+
+        private void UCClientes_Load(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

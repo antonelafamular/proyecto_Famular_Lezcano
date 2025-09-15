@@ -49,40 +49,14 @@ namespace proyecto_Famular_Lezcano
                 HeaderText = "Rol",
                 DataPropertyName = "Rol"
             });
-            dgvVendedores.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Eliminado",
-                DataPropertyName = "Estado"
-            });
-
-            // 🔹 Botón Modificar
-            var btnModificar = new DataGridViewButtonColumn
-            {
-                HeaderText = "Acciones",
-                Text = "Modificar",
-                Name = "btnModificar",
-                UseColumnTextForButtonValue = true
-            };
-            dgvVendedores.Columns.Add(btnModificar);
-
-            // 🔹 Botón Eliminar
-            var btnEliminar = new DataGridViewButtonColumn
-            {
-                HeaderText = "",
-                Text = "Eliminar",
-                Name = "btnEliminar",
-                UseColumnTextForButtonValue = true
-            };
-            dgvVendedores.Columns.Add(btnEliminar);
-
-            dgvVendedores.CellClick += dgvVendedores_CellClick;
 
             CargarUsuarios();
         }
 
         private void CargarUsuarios()
         {
-            dgvVendedores.DataSource = _context.Usuarios.ToList();
+            var usuarios = _context.Usuarios.ToList();
+            dgvVendedores.DataSource = usuarios;
         }
 
         private void BAgregar_Click(object sender, EventArgs e)
@@ -94,54 +68,6 @@ namespace proyecto_Famular_Lezcano
                     _context.Usuarios.Add(form.NuevoUsuario);
                     _context.SaveChanges();
                     CargarUsuarios(); // refrescar el grid
-                }
-            }
-        }
-
-        // 🔹 Evento para botones en el DataGridView
-        private void dgvVendedores_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var usuario = (Usuario)dgvVendedores.Rows[e.RowIndex].DataBoundItem;
-
-                if (dgvVendedores.Columns[e.ColumnIndex].Name == "btnModificar")
-                {
-                    // Abrir el formulario de edición
-                    using (FormAgregarUsuario form = new FormAgregarUsuario())
-                    {
-                        // 👇 Rellenar campos con los datos actuales
-                        form.CargarUsuario(usuario);
-
-                        if (form.ShowDialog() == DialogResult.OK && form.NuevoUsuario != null)
-                        {
-                            // Actualizar usuario existente
-                            usuario.Nombre = form.NuevoUsuario.Nombre;
-                            usuario.Apellido = form.NuevoUsuario.Apellido;
-                            usuario.NombreUsuario = form.NuevoUsuario.NombreUsuario;
-                            usuario.Contrasena = form.NuevoUsuario.Contrasena;
-                            usuario.Email = form.NuevoUsuario.Email;
-                            usuario.Rol = form.NuevoUsuario.Rol;
-                            usuario.Estado = 0;
-
-                            _context.Usuarios.Update(usuario);
-                            _context.SaveChanges();
-                            CargarUsuarios();
-                        }
-                    }
-                }
-                else if (dgvVendedores.Columns[e.ColumnIndex].Name == "btnEliminar")
-                {
-                    var result = MessageBox.Show("¿Seguro que deseas eliminar este usuario?",
-                                                 "Confirmación",
-                                                 MessageBoxButtons.YesNo,
-                                                 MessageBoxIcon.Warning);
-                    if (result == DialogResult.Yes)
-                    {
-                        usuario.Estado = 1;
-                        _context.SaveChanges();
-                        CargarUsuarios();
-                    }
                 }
             }
         }

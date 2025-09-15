@@ -38,60 +38,81 @@
             // LUsuario
             // 
             LUsuario.AutoSize = true;
-            LUsuario.Location = new Point(110, 9);
+            LUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            LUsuario.ForeColor = Color.SaddleBrown;
+            LUsuario.Location = new Point(126, 12);
             LUsuario.Name = "LUsuario";
-            LUsuario.Size = new Size(47, 15);
+            LUsuario.Size = new Size(70, 23);
             LUsuario.TabIndex = 0;
             LUsuario.Text = "Usuario";
             // 
             // LPassword
             // 
             LPassword.AutoSize = true;
-            LPassword.Location = new Point(99, 80);
+            LPassword.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            LPassword.ForeColor = Color.SaddleBrown;
+            LPassword.Location = new Point(113, 107);
             LPassword.Name = "LPassword";
-            LPassword.Size = new Size(67, 15);
+            LPassword.Size = new Size(99, 23);
             LPassword.TabIndex = 1;
             LPassword.Text = "Contraseña";
             // 
             // TUsuario
             // 
-            TUsuario.Location = new Point(84, 38);
+            TUsuario.BackColor = Color.Beige;
+            TUsuario.BorderStyle = BorderStyle.FixedSingle;
+            TUsuario.Location = new Point(96, 51);
+            TUsuario.Margin = new Padding(3, 4, 3, 4);
             TUsuario.Name = "TUsuario";
-            TUsuario.Size = new Size(100, 23);
+            TUsuario.Size = new Size(200, 27);
             TUsuario.TabIndex = 2;
             // 
             // TPassword
             // 
-            TPassword.Location = new Point(84, 113);
+            TPassword.BackColor = Color.Beige;
+            TPassword.BorderStyle = BorderStyle.FixedSingle;
+            TPassword.Location = new Point(96, 151);
+            TPassword.Margin = new Padding(3, 4, 3, 4);
             TPassword.Name = "TPassword";
-            TPassword.Size = new Size(100, 23);
+            TPassword.Size = new Size(200, 27);
             TPassword.TabIndex = 3;
+            TPassword.UseSystemPasswordChar = true;
             // 
             // BLogin
             // 
-            BLogin.Location = new Point(99, 151);
+            BLogin.BackColor = Color.Maroon;
+            BLogin.FlatAppearance.BorderSize = 0;
+            BLogin.FlatStyle = FlatStyle.Flat;
+            BLogin.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            BLogin.ForeColor = Color.White;
+            BLogin.Location = new Point(113, 201);
+            BLogin.Margin = new Padding(3, 4, 3, 4);
             BLogin.Name = "BLogin";
-            BLogin.Size = new Size(75, 23);
+            BLogin.Size = new Size(150, 40);
             BLogin.TabIndex = 4;
-            BLogin.Text = "Ingresar";
-            BLogin.UseVisualStyleBackColor = true;
+            BLogin.Text = "🔑 INGRESAR";
+            BLogin.UseVisualStyleBackColor = false;
             BLogin.Click += BLogin_Click;
             // 
             // FormLogin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(287, 195);
+            BackColor = Color.Bisque;
+            ClientSize = new Size(361, 325);
             Controls.Add(BLogin);
             Controls.Add(TPassword);
             Controls.Add(TUsuario);
             Controls.Add(LPassword);
             Controls.Add(LUsuario);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormLogin";
-            Text = "FormLogin";
+            Text = "Cine Vintage - Iniciar Sesión";
+            Load += FormLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }
+
 
         #endregion
 
